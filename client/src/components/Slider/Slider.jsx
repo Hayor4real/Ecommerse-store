@@ -12,7 +12,7 @@ const Slider = () => {
       ];
 
   return (
-    <div className='slider'>Slider
+    <div className='slider'>
      <div className='container'>
        <img src={data[0]} alt='' />
        <img src={data[1]} alt='' />
