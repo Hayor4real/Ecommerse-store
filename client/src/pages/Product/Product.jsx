@@ -50,7 +50,7 @@ const Product = () => {
               <span>Tag: T-Shirt, Women, Top</span>
             </div>
             <hr />
-            <div className="details">
+            <div className="info">
               <span>DESCRIPTION</span>
               <hr />
               <span>ADDITIONAL INFORMATION</span>
