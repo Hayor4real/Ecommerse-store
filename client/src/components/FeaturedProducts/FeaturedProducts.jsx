@@ -1,8 +1,9 @@
 import React from 'react'
-import { useEffect } from 'react';
+import { useEffect, useState} from 'react';
 import Card from "../Card/Card";
 import "./FeaturedProducts.scss"
 import axios from "axios"
+
 
 
 
@@ -27,10 +28,8 @@ useEffect(() => {
   fetchData()
 }, []);
 
-console.log(data)
 
-
-  return (
+   return (
     <div className='featuredProducts'>
     <div className='top'>
       <h1>{type}products</h1>
