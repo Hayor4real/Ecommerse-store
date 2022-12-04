@@ -1,49 +1,33 @@
 import React from 'react'
+import { useEffect } from 'react';
 import Card from "../Card/Card";
 import "./FeaturedProducts.scss"
+import axios from "axios"
 
 
 
 const FeaturedProducts = ({type}) => {
-  const data = [
-  {
-    id:1,
-    img: "https://images.pexels.com/photos/818992/pexels-photo-818992.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    img2: "https://images.pexels.com/photos/2036646/pexels-photo-2036646.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    title: "Long Sleeve Graphic T-shirt",
-    isNew: true,
-    oldPrice: 19,
-    price: 12
-  },
-  {
-    id:2,
-    img: "https://images.pexels.com/photos/1813947/pexels-photo-1813947.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    img2: "https://images.pexels.com/photos/818992/pexels-photo-818992.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    title: "Coat",
-    isNew: true,
-    oldPrice: 19,
-    price: 12
-  },
-  {
-    id:3,
-    img: "https://images.pexels.com/photos/818992/pexels-photo-818992.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    img2: "https://images.pexels.com/photos/818992/pexels-photo-818992.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    title: "Skirt",
-    isNew: true,
-    oldPrice: 19,
-    price: 12
-  },
-  {
-    id:4,
-    img: "https://images.pexels.com/photos/818992/pexels-photo-818992.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    img2: "https://images.pexels.com/photos/1813947/pexels-photo-1813947.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    title: "Hat",
-    isNew: true,
-    oldPrice: 19,
-    price: 12
-  },
+  
 
-  ]
+const [data, setData] = useState([])
+
+useEffect(() => {
+  const fetchData = async ()=> {
+    try {
+     const res = await axios.get(process.env.REACT_APP_API_URL+"/products", {
+      headers:{
+        Authorization:"bearer "+ process.env.REACT_APP_API_TOKEN,
+      },
+     }); //This is how i fetched the data using strapi
+     setData(res.data.data)
+    }catch(err){
+      console.log(err)
+    }
+  };
+  fetchData()
+}, [])
+
+
   return (
     <div className='featuredProducts'>
     <div className='top'>
